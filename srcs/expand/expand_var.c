@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdlib.h>
+#include "expand.h"
+#include "../../libft/libft.h"
 
 static int	handle_dollar(char *s, int *i, char **result, t_shell *shell)
 {

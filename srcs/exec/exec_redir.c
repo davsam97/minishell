@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include "exec.h"
 
 static int	handle_redir_in(t_redir *redir)
 {

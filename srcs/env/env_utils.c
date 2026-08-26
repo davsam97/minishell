@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "env.h"
+#include "../../libft/libft.h"
 
 int	count_env(t_env *env)
 {

@@ -10,7 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include "exec.h"
+#include "../env/env.h"
+#include "../expand/expand.h"
+#include "../signal/minishell_signal.h"
+#include "../../libft/libft.h"
 
 static void	exec_child_process(t_node *node, t_shell *shell, char *path)
 {

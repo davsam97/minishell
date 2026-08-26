@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdlib.h>
+#include "builtins.h"
+#include "../../libft/libft.h"
 
 void	unset_env_value(t_shell *shell, char *key)
 {

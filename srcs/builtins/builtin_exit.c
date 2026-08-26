@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <limits.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "builtins.h"
+#include "../../libft/libft.h"
 
 static int	ft_atol_safe(char *s, long *res)
 {

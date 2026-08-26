@@ -6,11 +6,20 @@
 /*   By: dasamuel <dasamuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 13:25:17 by dasamuel          #+#    #+#             */
-/*   Updated: 2026/08/26 11:52:27 by dasamuel         ###   ########.fr       */
+/*   Updated: 2026/08/26 12:19:24 by dasamuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+#include "core.h"
+#include "../env/env.h"
+#include "../exec/exec.h"
+#include "../signal/minishell_signal.h"
+#include "../../libft/libft.h"
 
 t_shell	*init_shell(char **envp)
 {
@@ -32,9 +41,6 @@ t_shell	*init_shell(char **envp)
 	return (shell);
 }
 
-// If there's an issue and you need to debug add the print:
-// expand_node(shell->node, shell);
-// print_nodes(shell->node, 0);
 static void	parse_and_run_command(char *str, t_shell *shell)
 {
 	int		exit_status;
@@ -67,7 +73,7 @@ static void	main_loop(t_shell *shell)
 		if (shell->is_tty)
 		{
 			set_signals_interactive();
-			line = readline("🐐🐚 > ");
+			line = readline("🐐🐚> ");
 		}
 		else
 			line = get_next_line_strip_nl(STDIN_FILENO);
@@ -82,8 +88,6 @@ static void	main_loop(t_shell *shell)
 	}
 }
 
-// if (isatty(fileno(stdin)))
-// 	shell->prompt = readline(shell->terminal_prompt);
 int	main(int argc, char **argv, char **envp)
 {
 	t_shell	*shell;

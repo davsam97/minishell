@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "builtins.h"
+#include "../env/env.h"
+#include "../../libft/libft.h"
 
 int	is_valid_identifier(char *s)
 {

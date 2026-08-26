@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "parse.h"
+#include "../core/core.h"
 
-// Consumes && TK_OP_AND and || TK_OP_OR tokens
 t_node	*parse_expression(t_ctx_parser *ctx)
 {
 	t_node			*node;
@@ -37,7 +37,6 @@ t_node	*parse_expression(t_ctx_parser *ctx)
 	return (node);
 }
 
-// Consumes | TK_PIPE tokens
 t_node	*parse_pipeline(t_ctx_parser *ctx)
 {
 	t_node	*node;
@@ -63,9 +62,6 @@ t_node	*new_subshell(t_node *node)
 	return (node);
 }
 
-// Consumes ( TK_OPEN_PARENT tokens
-// if (ctx->arr_token[ctx->i].type == TK_END)
-// HANDLE TRAILING OPERATORS
 t_node	*parse_command(t_ctx_parser *ctx)
 {
 	t_node	*node;
@@ -90,16 +86,6 @@ t_node	*parse_command(t_ctx_parser *ctx)
 	return (node);
 }
 
-//    █████████   █████      █████████  ███████████                            
-//   ███▒▒▒▒▒███ ▒▒███      ███▒▒▒▒▒███▒█▒▒▒███▒▒▒█                            
-//  ▒███    ▒███  ▒███████ ▒███    ▒▒▒ ▒   ▒███  ▒  ████████   ██████   ██████ 
-//  ▒███████████  ▒███▒▒███▒▒█████████     ▒███    ▒▒███▒▒███ ███▒▒███ ███▒▒███
-//  ▒███▒▒▒▒▒███  ▒███ ▒███ ▒▒▒▒▒▒▒▒███    ▒███     ▒███ ▒▒▒ ▒███████ ▒███████ 
-//  ▒███    ▒███  ▒███ ▒███ ███    ▒███    ▒███     ▒███     ▒███▒▒▒  ▒███▒▒▒  
-//  █████   █████ ████████ ▒▒█████████     █████    █████    ▒▒██████ ▒▒██████ 
-// ▒▒▒▒▒   ▒▒▒▒▒ ▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒    ▒▒▒▒▒      ▒▒▒▒▒▒   ▒▒▒▒▒▒  
-
-// print_tokens(ctx.arr_token);
 t_node	*get_abstract_syntax_tree(char *str, t_shell *shell)
 {
 	t_ctx_parser	ctx;

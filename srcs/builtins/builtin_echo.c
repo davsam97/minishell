@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <unistd.h>
+#include "builtins.h"
+#include "../../libft/libft.h"
 
 int	ft_echo(char **args)
 {

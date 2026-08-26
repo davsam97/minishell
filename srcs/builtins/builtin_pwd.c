@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "builtins.h"
+#include "../../libft/libft.h"
 
 int	ft_pwd(t_shell *shell)
 {

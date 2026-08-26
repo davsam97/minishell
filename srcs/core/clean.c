@@ -6,15 +6,13 @@
 /*   By: dasamuel <dasamuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 11:53:42 by dasamuel          #+#    #+#             */
-/*   Updated: 2026/08/26 11:53:43 by dasamuel         ###   ########.fr       */
+/*   Updated: 2026/08/26 12:35:35 by dasamuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdlib.h>
+#include "core.h"
 
-// 1: 001 clean tokens
-// 2: 010 clean nodes
-// 4: 100 clean shell
 void	clean_stuff(t_token **arr_token, t_node **node, t_shell *shell,
 		int flag)
 {

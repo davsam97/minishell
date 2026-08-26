@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdlib.h>
+#include "expand.h"
+#include "../env/env.h"
+#include "../../libft/libft.h"
 
 int	is_var_char(char c)
 {

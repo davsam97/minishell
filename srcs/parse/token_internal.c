@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "parse.h"
+#include "../core/core.h"
+#include "../../libft/libft.h"
 
-// (|, <, >, &, (, ), espace)
 static int	is_valid_word_char(char c)
 {
 	if (ft_isalnum(c))
@@ -109,11 +110,7 @@ static int	set_token_else(t_token *token, char *str, char c, int end)
 	return (end);
 }
 
-// Set a single token.
-// Given the string to parse and the current index, 
-// Set the token type, return END as the new index
-// returns -1 on error
-// --> if (c == '!') 	///		use this line to set invalid chars
+// Returns the new index into str, or -1 on error.
 int	set_token(t_token *arr_token, int arr_i, char *str, int start)
 {
 	int			end;

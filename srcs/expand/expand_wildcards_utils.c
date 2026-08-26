@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <dirent.h>
+#include "expand.h"
+#include "../../libft/libft.h"
 
 int	has_wildcard(char *str)
 {

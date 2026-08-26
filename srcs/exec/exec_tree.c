@@ -10,7 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include "exec.h"
+#include "../signal/minishell_signal.h"
 
 int	execute_subshell(t_node *node, t_shell *shell)
 {

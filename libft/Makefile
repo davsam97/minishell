@@ -6,7 +6,7 @@
 #    By: dasamuel <dasamuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 15:19:36 by dasamuel          #+#    #+#              #
-#    Updated: 2026/01/03 08:47:43 by dasamuel         ###   ########.fr        #
+#    Updated: 2026/08/26 12:23:20 by dasamuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,11 @@ NAME = libft.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -MMD -MP
 
-RM = rm -f
+RM = rm -rf
+
+OBJ_DIR = build
 
 SRCS = 	ft_atoi.c		\
 		ft_bzero.c		\
@@ -69,14 +71,16 @@ BONUS =	ft_lstnew.c			\
 		ft_lstclear.c		\
 		ft_lstiter.c		\
 		ft_lstmap.c
-		
 
+OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
+BONUS_OBJS = $(addprefix $(OBJ_DIR)/,$(BONUS:.c=.o))
+DEPS = $(OBJS:.o=.d) $(BONUS_OBJS:.o=.d)
 
-OBJS = ${SRCS:.c=.o}
-BONUS_OBJS = $(BONUS:.c=.o)
-
-.c.o:
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+-include $(DEPS)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
@@ -87,7 +91,7 @@ bonus: $(OBJS) $(BONUS_OBJS)
 	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 clean:
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJ_DIR)
 
 fclean: clean
 	$(RM) $(NAME)

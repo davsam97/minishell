@@ -10,9 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <readline/readline.h>
+#include "parse.h"
+#include "../core/core.h"
+#include "../signal/minishell_signal.h"
+#include "../expand/expand.h"
+#include "../../libft/libft.h"
 
-// This read what's in the standard input and write to FD
 void	write_heredoc(int fd, char *del, int do_expand_vars, t_shell *shell)
 {
 	char	*line;
@@ -42,7 +48,6 @@ void	write_heredoc(int fd, char *del, int do_expand_vars, t_shell *shell)
 	free(line);
 }
 
-// Fork a heredoc, close the write fd
 void	call_heredoc(t_node *node, t_ctx_parser *ctx, char *delim
 	, int fd[2])
 {
@@ -58,7 +63,6 @@ void	call_heredoc(t_node *node, t_ctx_parser *ctx, char *delim
 	close(fd[1]);
 }
 
-// prints a pretty prompt when && || etc
 static char	*pretty_prompt(t_ctx_parser *ctx)
 {
 	int		type;
@@ -92,10 +96,8 @@ static int	not_just_empty_space(char *str)
 	return (0);
 }
 
-// When we unexpectedly have a TK_END, we read more input from the user.
-// We tokenize the new input, and change the context's array of token to the
-// new array and set the index to 0.
-// Return 0 on success, -1 on error
+// Called when the parser hits an unexpected TK_END: reads and tokenizes
+// another line, then swaps it into ctx so parsing can continue.
 int	command_continuation(t_ctx_parser *ctx)
 {
 	char	*line;

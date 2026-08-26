@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdlib.h>
+#include "expand.h"
 
 char	**expand_single_wildcard(char *arg)
 {

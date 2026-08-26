@@ -6,11 +6,13 @@
 /*   By: dasamuel <dasamuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 06:55:06 by dasamuel          #+#    #+#             */
-/*   Updated: 2026/08/26 11:51:46 by dasamuel         ###   ########.fr       */
+/*   Updated: 2026/08/26 12:37:07 by dasamuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdlib.h>
+#include "expand.h"
+#include "../../libft/libft.h"
 
 static int	add_matches(char ***nv, int *j, char **matches)
 {
@@ -52,7 +54,6 @@ static int	process_arg(char **argv, char **new_argv, int *j, int i)
 	return (1);
 }
 
-// FREES EVERY ELEMENT IN ARGV
 char	**expand_wildcards_in_argv(char **argv)
 {
 	int		i;

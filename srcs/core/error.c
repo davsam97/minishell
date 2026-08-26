@@ -6,11 +6,12 @@
 /*   By: dasamuel <dasamuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 11:53:56 by dasamuel          #+#    #+#             */
-/*   Updated: 2026/08/26 11:53:57 by dasamuel         ###   ########.fr       */
+/*   Updated: 2026/08/26 12:34:32 by dasamuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "core.h"
+#include "../../libft/libft.h"
 
 void	print_3red(char *arg1, int i, char *arg3)
 {
@@ -29,9 +30,6 @@ void	print_3red(char *arg1, int i, char *arg3)
 	ft_putstr_fd("\n", 2);
 }
 
-// I would love to just use printf(RED "Err: %s" RESET "\n", str);
-// But it seems like it doesnt work with some testers because of the stdio.h
-// buffer system that doesnt fflush out when you dup2 the STD or something.
 void	print_2red(char *arg1, char *arg2)
 {
 	ft_putstr_fd(RED "Err: ", 2);

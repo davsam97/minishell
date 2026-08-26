@@ -64,7 +64,6 @@ SRC_FILES	=	builtins/builtin_cd.c				\
 OBJ_FILES	=	$(SRC_FILES:.c=.o)
 SRC_PATH	=	srcs/
 OBJ_PATH	=	build/
-INCLUDES	=	includes/
 
 LIBFT_DIR = libft
 LIBFT_A = $(LIBFT_DIR)/libft.a
@@ -85,7 +84,7 @@ $(NAME): $(OBJECTS) $(LIBFT_A)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 -include $(DEPS)
 

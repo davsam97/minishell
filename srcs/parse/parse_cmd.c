@@ -10,11 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <readline/readline.h>
+#include "parse.h"
+#include "../core/core.h"
+#include "../signal/minishell_signal.h"
+#include "../../libft/libft.h"
 
-// Malloc a new REDIR
-// sets the fields correctly (and move up the ctx)
-// add it to the end of NODE->REDIR
 static t_redir	*create_n_append_new_redir(t_node *node, t_ctx_parser *ctx)
 {
 	t_redir	*redir;
@@ -43,9 +47,8 @@ static t_redir	*create_n_append_new_redir(t_node *node, t_ctx_parser *ctx)
 	return (redir);
 }
 
-// This is called when the token at ARR_TOKEN[*INDEX] is < or > or << or >>:
-// calls CREATE N APPEND NEW REDIR
-// if TK_REDIR_2IN : Create a fork child that calls heredoc
+// TK_REDIR_2IN (heredoc) writes the heredoc body into a pipe, keeping the
+// read end open on redir->fd for later use as stdin.
 static int	parse_redirection(t_node *node,	t_ctx_parser *ctx)
 {
 	t_redir	*redir;
@@ -69,9 +72,8 @@ static int	parse_redirection(t_node *node,	t_ctx_parser *ctx)
 	return (0);
 }
 
-// Check if there's anything wrong with the command (redirection 
-// without filename, parenthesis in the middle)
-// return the malloc size for argv.
+// Validates the redirections have a filename, and returns the number of
+// TK_WORD tokens (i.e. the argv size to allocate), or -1 on error.
 static int	get_argv_size(t_ctx_parser *ctx)
 {
 	int		nb_of_words;
@@ -124,10 +126,7 @@ static int	populate_argv(t_ctx_parser *ctx, t_node *node)
 	return (0);
 }
 
-// Consumes WORDS and REDIR tokens.
-// a SIMPLE COMMAND, is made of REDIRECTIONS and WORDS, no other operators.
-// CTX should always be pointing at a WORD / REDIR token.
-// Should never have an &&, ||, pipe or () token OR END token.
+// ctx must be pointing at a WORD or REDIR token: never &&, ||, |, (), or END.
 t_node	*parse_simple_command(t_ctx_parser *ctx)
 {
 	t_node	*node;

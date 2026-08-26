@@ -10,7 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
+#include "exec.h"
+#include "../env/env.h"
+#include "../../libft/libft.h"
 
 static int	file_exists(char *path)
 {

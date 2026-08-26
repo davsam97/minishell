@@ -6,14 +6,14 @@
 /*   By: dasamuel <dasamuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 12:01:00 by dasamuel          #+#    #+#             */
-/*   Updated: 2026/08/26 12:01:01 by dasamuel         ###   ########.fr       */
+/*   Updated: 2026/08/26 12:36:45 by dasamuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdlib.h>
+#include "expand.h"
+#include "../../libft/libft.h"
 
-// I: index of element to move
-// END: target element to move to
 static void	shift_element(char **argv, int i, int end)
 {
 	int		j;
@@ -28,10 +28,6 @@ static void	shift_element(char **argv, int i, int end)
 	}
 }
 
-// TTY
-// move every empty arg to the end of the array
-// if all of them are empty, change argv[0] to 'true' (empty command)
-// they even get moved past the NULL element
 static void	shift_empty_args(char **argv)
 {
 	int	i;
@@ -51,10 +47,6 @@ static void	shift_empty_args(char **argv)
 	}
 }
 
-// first move the empty args to the end.
-// If the first element is still NUll, that means
-// all of them are empty, then we do a trick where we switch the
-// first cmd with `true`
 void	handle_empty_args(char ***argv)
 {
 	shift_empty_args(*argv);

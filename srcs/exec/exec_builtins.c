@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <unistd.h>
+#include "exec.h"
+#include "../builtins/builtins.h"
+#include "../../libft/libft.h"
 
 static int	save_fds(int *saved_stdin, int *saved_stdout)
 {

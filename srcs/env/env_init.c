@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdlib.h>
+#include "env.h"
+#include "../../libft/libft.h"
 
 t_env	*new_env_node(char *key, char *value)
 {

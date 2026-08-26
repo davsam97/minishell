@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <stdio.h>
+#include <unistd.h>
+#include "builtins.h"
+#include "../env/env.h"
+#include "../../libft/libft.h"
 
 static int	count_args(char **args)
 {

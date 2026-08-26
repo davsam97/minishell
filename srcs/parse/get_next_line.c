@@ -6,17 +6,16 @@
 /*   By: dasamuel <dasamuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 12:01:29 by dasamuel          #+#    #+#             */
-/*   Updated: 2026/08/26 12:01:30 by dasamuel         ###   ########.fr       */
+/*   Updated: 2026/08/26 12:37:20 by dasamuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
-#include <errno.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "parse.h"
+#include "../core/core.h"
+#include "../../libft/libft.h"
 
-// This is a modified gnl that only reads 1 byte at a time, because of that, we
-// don't need a static var
-// len is given as an arg just for norminette
-// return NULL when read() hits EOF and no data was read.
 static char	*get_next_line(int fd, int len)
 {
 	char		*remain;
