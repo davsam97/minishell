@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   signal.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasamuel <dasamuel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/29 13:25:17 by dasamuel          #+#    #+#             */
+/*   Updated: 2026/08/26 11:24:49 by dasamuel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <signal.h>
+
+static volatile sig_atomic_t	g_sigint_received = 0;
+
+int	is_sigint_received(void)
+{
+	return (g_sigint_received != 0);
+}
+
+void	mark_sigint_received(void)
+{
+	g_sigint_received = 1;
+}
+
+void	clear_sigint_received(void)
+{
+	g_sigint_received = 0;
+}
