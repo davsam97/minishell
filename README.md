@@ -71,7 +71,7 @@ libft/          in-house standard library replacement
 
 Dependency tracking is handled with `-MMD -MP`, so only the object files that actually depend on a changed header are rebuilt. The whole codebase is [42 Norm](https://github.com/42School/norminette) compliant.
 
-## Authors
+## Author
 
 - [davsam97](https://github.com/davsam97)
   
