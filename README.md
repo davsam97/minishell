@@ -53,7 +53,7 @@ b
 
 ## Project structure
 
-The codebase is organized by feature: every module keeps its `.c` files and its own header side by side, aggregated by a single umbrella header.
+The codebase is organized by feature: every module keeps its `.c` files and its own header side by side (`core.h`, `parse.h`, `exec.h`…).
 
 ```
 srcs/
@@ -64,8 +64,6 @@ srcs/
 ├── expand/     variable expansion, quote removal, wildcard expansion
 ├── parse/      tokenizer, AST builder, heredoc handling
 └── signal/     signal handlers
-includes/
-└── minishell.h aggregates every feature header + system includes
 libft/          in-house standard library replacement
 ```
 
